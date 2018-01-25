@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class CharacterService{
-  private _getCharacter = '/get';
+  private _getCharacter = '/cartoon/get';
 
   constructor(private http: Http) {
   }

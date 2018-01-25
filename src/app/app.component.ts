@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Character } from './character/character.model';
+import { CharacterService } from './character/character.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,15 @@ import { Character } from './character/character.model';
 export class AppComponent {
   title = 'app';
   character = new Character;
+  private sub: Subscription;
 
-  ngOnInit(){
-    this.character.name = "Marge Simpson";
-    this.character.birthDate = new Date();
+  constructor(private characterService: CharacterService) {}
+
+  ngOnInit(): void{
+    this.characterService.getCharacter().subscribe(
+      character => {
+        this.character = character;
+      }
+    )
   }
 }
