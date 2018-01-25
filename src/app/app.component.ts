@@ -8,6 +8,10 @@ import { Character } from './character/character.model';
 })
 export class AppComponent {
   title = 'app';
-  character = new Character; 
-  
+  character = new Character;
+
+  ngOnInit(){
+    this.character.name = "Marge Simpson";
+    this.character.birthDate = new Date();
+  }
 }
